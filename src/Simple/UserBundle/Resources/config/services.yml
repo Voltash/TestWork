@@ -1,0 +1,23 @@
+parameters:
+    social_user_provider.class: Simple\UserBundle\UserProvider\FOSUBUserProvider
+
+services:
+    social_user_provider:
+        class: "%social_user_provider.class%"
+        arguments: [@fos_user.user_manager,{facebook: facebookId}]
+
+    user.event_listener:
+        class: Simple\UserBundle\EventListener\UserEventListener
+        arguments: [ @router ]
+        tags:
+            - { name: kernel.event_subscriber }
+    user.registration.form.type:
+        class: Simple\UserBundle\Form\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: simple_user_registration }
+    user.profile.form.type:
+        class: Simple\UserBundle\Form\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: simple_user_profile }

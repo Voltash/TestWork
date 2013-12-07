@@ -1,0 +1,35 @@
+{% extends 'MopaBootstrapBundle::base_css.html.twig' %}
+
+
+{% block head_style %}
+    {% stylesheets
+        'bundles/simpleuser/bootstrap/css/bootstrap.css'
+        'bundles/simpleuser/bootstrap/css/bootstrap-theme.min.css'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
+{% endblock head_style %}
+
+{% block foot_script %}
+{%- javascripts
+    '@SimpleUserBundle/Resources/public/js/jquery-1.10.2.min.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/tooltip.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/affix.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/alert.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/button.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/carousel.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/collapse.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/dropdown.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/modal.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/popover.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/scrollspy.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/tab.js'
+    '@SimpleUserBundle/Resources/public/bootstrap/js/transition.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    '@MopaBootstrapBundle/Resources/public/js/eyecon-bootstrap-datepicker.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock foot_script %}

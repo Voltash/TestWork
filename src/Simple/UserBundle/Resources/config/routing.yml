@@ -1,0 +1,3 @@
+simple_test_site_homepage:
+    pattern:  /
+    defaults: { _controller: SimpleUserBundle:Default:index }

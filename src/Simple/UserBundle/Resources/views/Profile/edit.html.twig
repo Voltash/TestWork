@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+{% block headline %}Edit Profile page{% endblock headline %}
+
+{% block content %}
+    <div class="col-lg-3">
+        <h3>Edit Profile form</h3>
+    </div>
+    <div class="col-lg-9">
+        <form class="form-horizontal" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" >
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+            </div>
+        </form>
+
+    </div>
+{% endblock content %}
