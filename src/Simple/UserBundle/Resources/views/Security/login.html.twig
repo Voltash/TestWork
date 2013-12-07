@@ -1,4 +1,35 @@
-{% include 'SimpleUserBundle:Security:login.html.twig' with {csrf_token: csrf_token, last_username: last_username, error: error} %}
+{% extends '::base.html.twig' %}
+
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+{% block headline %}Log In page{% endblock headline %}
+
+{% block content %}
+    {% if error %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-danger">{{ error|trans }}</div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="col-lg-3">
+        <h3>Log In form</h3>
+    </div>
+    <div class="col-lg-9">
+        <form class="well bs-example " action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label for="username">Email</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="_password" required="required" />
+
+            <input type="submit" class="btn btn-default" id="_submit" name="_submit" value="LOG IN" />
+            <a class="btn btn-primary" href="{{ path('hwi_oauth_service_redirect', {'service' : 'facebook'}) }}">Facebook</a>
+        </form>
+    </div>
+{% endblock content %}
 
 
 
